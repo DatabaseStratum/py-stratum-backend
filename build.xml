@@ -25,17 +25,6 @@
                 </replaceregexp>
             </filterchain>
         </reflexive>
-        <reflexive>
-            <fileset dir=".">
-                <include name="pystratum/application/PyStratumApplication.py"/>
-            </fileset>
-            <filterchain>
-                <replaceregexp>
-                    <regexp pattern="Application.__init__\(self, 'pystratum', .*"
-                            replace="Application.__init__(self, 'pystratum', '${VERSION}')"/>
-                </replaceregexp>
-            </filterchain>
-        </reflexive>
         <gitcommit repository="." message="Release: ${VERSION}" allFiles="true"/>
         <gitpush repository="."/>
         <gittag repository="." name="${VERSION}"/>
@@ -55,11 +44,6 @@
 
     <!-- All steps for releasing a new version -->
     <target name="new-version" depends="version,dist,upload"/>
-
-    <!-- Checks the code with pylint -->
-    <target name="pylint">
-        <exec command="pylint --rcfile pylintrc pystratum" passthru="true"/>
-    </target>
 
     <!-- Runs all unit tests-->
     <target name="unit">
