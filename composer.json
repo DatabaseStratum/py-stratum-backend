@@ -3,6 +3,7 @@
     "setbased/phing-extensions": "2.*"
   },
   "config": {
-    "bin-dir": "bin"
+    "bin-dir": "bin/",
+    "sort-packages": true
   }
 }

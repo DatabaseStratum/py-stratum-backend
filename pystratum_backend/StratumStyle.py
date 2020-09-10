@@ -1,13 +1,10 @@
-"""
-PyStratum
-"""
 from typing import List, Union
 
-from cleo import Output, Input
+from cleo import Input, Output
 from cleo.styles import CleoStyle
 
 
-class PyStratumStyle(CleoStyle):
+class StratumStyle(CleoStyle):
     """
     Output style for py-stratum.
     """
@@ -36,10 +33,20 @@ class PyStratumStyle(CleoStyle):
 
     # ------------------------------------------------------------------------------------------------------------------
     def warning(self, message: Union[str, List[str]]) -> None:
+        """
+        Formats waring text.
+
+        :param str|list[str] message: The message or messages.
+        """
         self.block(message, 'WARNING', 'fg=white;bg=red', padding=True)
 
     # ------------------------------------------------------------------------------------------------------------------
     def text(self, message: Union[str, List[str]]) -> None:
+        """
+        Formats informational text.
+
+        :param str|list[str] message: The message or messages.
+        """
         if isinstance(message, list):
             messages = message
         else:
@@ -53,7 +60,7 @@ class PyStratumStyle(CleoStyle):
         """
         Logs a message only when logging level is verbose.
 
-        :param str|list[str] message: The message.
+        :param str|list[str] message: The message or messages.
         """
         if self.get_verbosity() >= Output.VERBOSITY_VERBOSE:
             self.writeln(message)
@@ -63,7 +70,7 @@ class PyStratumStyle(CleoStyle):
         """
         Logs a message only when logging level is very verbose.
 
-        :param str|list[str] message: The message.
+        :param str|list[str] message:  The message or messages.
         """
         if self.get_verbosity() >= Output.VERBOSITY_VERY_VERBOSE:
             self.writeln(message)

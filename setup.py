@@ -9,14 +9,14 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='PyStratum',
+    name='PyStratum-Backend',
 
-    version='0.10.22',
+    version='0.0.0',
 
-    description='A stored procedure and function loader and wrapper generator for MySQL, SQL Server, and PostgresSQL',
+    description='PyStratum Backend: The glue between PyStratum and backends for RDBMS',
     long_description=long_description,
 
-    url='https://github.com/SetBased/py-stratum',
+    url='https://github.com/SetBased/py-stratum-backend',
 
     author='Set Based IT Consultancy',
     author_email='info@setbased.nl',
@@ -24,7 +24,7 @@ setup(
     license='MIT',
 
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
 
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
@@ -36,17 +36,12 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
 
-    keywords='stored routines, stored procedure, stored procedures, wrapper, loader, MySQL, SQL Server, PostgreSQL',
+    keywords='PyStratum, Backend',
 
     packages=find_packages(exclude=['build', 'test']),
 
     install_requires=['cleo==0.6.8'],
-
-    entry_points={
-        'console_scripts': [
-            'pystratum = pystratum:main',
-        ],
-    }
 )
