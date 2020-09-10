@@ -1,7 +1,7 @@
 **/__pycache__/
 /.coverage
 /.idea/
-/PyStratum.egg-info/
+/PyStratum_Backend.egg-info/
 /bin/phing
 /build/
 /composer.lock
