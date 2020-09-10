@@ -1,7 +1,6 @@
 <project name="PyStratum" default="build" basedir=".">
     <taskdef name="readSemanticVersion" classname="vendor.setbased.phing-extensions.src.Task.ReadSemanticVersionTask"/>
     <property name="BUILD_DIR" value="./build"/>
-    <property name="VERSION" value="0.0.0"/>
 
     <!-- Run composer update and executes various other updates -->
     <target name="composer-update">
@@ -11,10 +10,7 @@
     <!-- Creates a new version/release. -->
     <!-- @todo replace semantic version with pep-396 -->
     <target name="version">
-        <readSemanticVersion file=".version"
-                             versionProperty="VERSION"
-                             haltOnError="true"/>
-
+        <readSemanticVersion file=".version" versionProperty="VERSION" haltOnError="true"/>
         <reflexive>
             <fileset dir=".">
                 <include name="setup.py"/>
@@ -39,7 +35,7 @@
     <!-- Uploads a distribution to PyPI -->
     <target name="upload">
         <loadfile property="VERSION" file=".version"/>
-        <exec command="twine upload dist/PyStratum-${VERSION}.tar.gz" passthru="true" checkreturn="true"/>
+        <exec command="twine upload dist/PyStratum-Backend-${VERSION}.tar.gz" passthru="true" checkreturn="true"/>
     </target>
 
     <!-- All steps for releasing a new version -->
