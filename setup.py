@@ -11,7 +11,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
     name='PyStratum-Backend',
 
-    version='1.0.1',
+    version='1.0.2',
 
     description='PyStratum Backend: The glue between PyStratum and backends for RDBMS',
     long_description=long_description,
