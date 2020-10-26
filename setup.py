@@ -16,7 +16,7 @@ setup(
     description='PyStratum Backend: The glue between PyStratum and backends for RDBMS',
     long_description=long_description,
 
-    url='https://github.com/SetBased/py-stratum-backend',
+    url='https://github.com/DatabaseStratum/py-stratum-backend',
 
     author='Set Based IT Consultancy',
     author_email='info@setbased.nl',
