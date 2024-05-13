@@ -42,7 +42,7 @@
     <!-- Uploads a distribution to PyPI -->
     <target name="upload">
         <loadfile property="VERSION" file=".version"/>
-        <exec command="./env/bin/python -m twine upload dist/PyStratum-Backend-${VERSION}*" passthru="true" checkreturn="true"/>
+        <exec command="./venv/bin/python -m twine upload dist/PyStratum-Backend-${VERSION}*" passthru="true" checkreturn="true"/>
     </target>
 
     <!-- All steps for releasing a new version -->
