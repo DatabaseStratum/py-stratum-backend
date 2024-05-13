@@ -21,7 +21,7 @@ classifiers = [
     "Topic :: System :: Installation/Setup",
 ]
 dependencies = [
-    "cleo~=2.0.1",
+    "cleo>=2.0.1, ==2.*",
 ]
 license = {text = "MIT"}
 requires-python = ">=3.9"
@@ -32,3 +32,9 @@ Homepage = "https://github.com/DatabaseStratum/py-stratum-backend"
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
+
+[project.optional-dependencies]
+dev = [
+    "build>=1.2.1, ==1.*",
+    "twine>=5.0.0, ==5.*"
+]

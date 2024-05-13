@@ -6,6 +6,7 @@
 /bin/phing
 /composer.lock
 /dist/
+/requirements.txt
 /test/html/
 /vendor/
 /venv/

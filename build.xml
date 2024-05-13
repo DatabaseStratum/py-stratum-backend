@@ -7,6 +7,18 @@
         <exec command="composer update" checkreturn="true" passthru="true"/>
     </target>
 
+    <!-- Install virtual environment -->
+    <target name="venv">
+        <delete dir="venv" quiet="true"/>
+        <exec command="python3 -m venv venv" checkreturn="true" passthru="true"/>
+        <exec command="./venv/bin/python -m pip install --upgrade pip" checkreturn="true" passthru="true"/>
+        <exec command="./venv/bin/python -m pip install --upgrade pip-tools" checkreturn="true" passthru="true"/>
+        <exec command="./venv/bin/python -m piptools compile --all-extras -o requirements.txt pyproject.toml"
+              passthru="true" checkreturn="true"/>
+        <exec command="./venv/bin/python -m pip install --upgrade -r requirements.txt" passthru="true"
+              checkreturn="true"/>
+    </target>
+
     <!-- Creates a new version/release. -->
     <!-- @todo replace semantic version with pep-396 -->
     <target name="version">
@@ -25,13 +37,6 @@
         <gitpush repository="."/>
         <gittag repository="." name="${VERSION}"/>
         <gitpush repository="." refspec="${VERSION}" quiet="false"/>
-    </target>
-
-    <!-- Install DEV requirements -->
-    <target name="requirements-dev">
-        <exec command="./venv/bin/python -m pip install --upgrade setuptools" passthru="true" checkreturn="true"/>
-        <exec command="./venv/bin/python -m pip install --upgrade build" passthru="true" checkreturn="true"/>
-        <exec command="./venv/bin/python -m pip install --upgrade twine" passthru="true" checkreturn="true"/>
     </target>
 
     <!-- Creates a new distribution using pyproject.toml -->
