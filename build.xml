@@ -13,11 +13,11 @@
         <readSemanticVersion file=".version" versionProperty="VERSION" haltOnError="true"/>
         <reflexive>
             <fileset dir=".">
-                <include name="setup.py"/>
+                <include name="pyproject.toml"/>
             </fileset>
             <filterchain>
                 <replaceregexp>
-                    <regexp pattern="version=.*" replace="version='${VERSION}',"/>
+                    <regexp pattern="version = .*" replace="version= &quot;${VERSION}&quot;"/>
                 </replaceregexp>
             </filterchain>
         </reflexive>
@@ -27,15 +27,22 @@
         <gitpush repository="." refspec="${VERSION}" quiet="false"/>
     </target>
 
+    <!-- Install DEV requirements -->
+    <target name="requirements-dev">
+        <exec command="./venv/bin/python -m pip install --upgrade setuptools" passthru="true" checkreturn="true"/>
+        <exec command="./venv/bin/python -m pip install --upgrade build" passthru="true" checkreturn="true"/>
+        <exec command="./venv/bin/python -m pip install --upgrade twine" passthru="true" checkreturn="true"/>
+    </target>
+
     <!-- Creates a new distribution using setup.py -->
     <target name="dist">
-        <exec command="python3 setup.py sdist" passthru="true" checkreturn="true"/>
+        <exec command="./venv/bin/python -m build" passthru="true" checkreturn="true"/>
     </target>
 
     <!-- Uploads a distribution to PyPI -->
     <target name="upload">
         <loadfile property="VERSION" file=".version"/>
-        <exec command="twine upload dist/PyStratum-Backend-${VERSION}.tar.gz" passthru="true" checkreturn="true"/>
+        <exec command="./env/bin/python -m twine upload dist/PyStratum-Backend-${VERSION}*" passthru="true" checkreturn="true"/>
     </target>
 
     <!-- All steps for releasing a new version -->
