@@ -9,10 +9,8 @@ class ConstantWorker(ABC):
     # ------------------------------------------------------------------------------------------------------------------
     def execute(self) -> int:
         """
-        Does the actual execution of the constant command for the backend. Returns 0 on success. Otherwise returns
+        Does the actual execution of the constant command for the backend. Returns 0 on success. Otherwise, returns
         nonzero.
-
-        :rtype: int
         """
         pass
 

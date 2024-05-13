@@ -10,13 +10,10 @@ class RoutineLoaderWorker(ABC):
     # ------------------------------------------------------------------------------------------------------------------
     def execute(self, file_names: Optional[List[str]] = None) -> int:
         """
-        Does the actual execution of the routine loader command for the backend. Returns 0 on success. Otherwise
+        Does the actual execution of the routine loader command for the backend. Returns 0 on success. Otherwise,
         returns nonzero.
 
-        :param list[str]|None file_names: The sources that must be loaded. If none all sources (if required) will
-                                          loaded.
-
-        :rtype: int
+        :param file_names: The sources that must be loaded. If None all sources (if required) will be loaded.
         """
         pass
 

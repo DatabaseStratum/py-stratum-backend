@@ -10,9 +10,7 @@ class RoutineWrapperGeneratorWorker(ABC):
     def execute(self) -> int:
         """
         Does the actual execution of the routine wrapper generator command for the backend. Returns 0 on success.
-        Otherwise returns nonzero.
-
-        :rtype: int
+        Otherwise, returns nonzero.
         """
         pass
 
