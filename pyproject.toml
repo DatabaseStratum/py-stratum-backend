@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pystratum-backend"
-version = "2.0.3"
+version = "2.0.4"
 description = "PyStratum Backend: The glue between PyStratum and backends for RDBMS"
 authors = ["Set Based IT Consultancy <info@setbased.nl>"]
 license = "MIT"
