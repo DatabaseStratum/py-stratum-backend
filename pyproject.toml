@@ -1,6 +1,6 @@
 [project]
 name = "PyStratum-Backend"
-version = "2.0.1"
+version = "2.0.2"
 description = "PyStratum Backend: The glue between PyStratum and backends for RDBMS"
 keywords = ["PyStratum", "Backend"]
 readme = "README.rst"
