@@ -34,7 +34,7 @@
         <exec command="./venv/bin/python -m pip install --upgrade twine" passthru="true" checkreturn="true"/>
     </target>
 
-    <!-- Creates a new distribution using setup.py -->
+    <!-- Creates a new distribution using pyproject.toml -->
     <target name="dist">
         <exec command="./venv/bin/python -m build" passthru="true" checkreturn="true"/>
     </target>
@@ -47,27 +47,6 @@
 
     <!-- All steps for releasing a new version -->
     <target name="release" depends="version,dist,upload"/>
-
-    <!-- Runs all unit tests-->
-    <target name="unit">
-        <exec command="python3 -m unittest discover -s test -p \*Test.py" passthru="true" checkreturn="true"/>
-    </target>
-
-    <!-- Generates the API documentation -->
-    <target name="apidoc">
-        <delete includeemptydirs="true" verbose="false" failonerror="true">
-            <fileset dir="source">
-                <include name="**"/>
-                <exclude name="conf.py"/>
-                <exclude name="index.rst"/>
-                <exclude name="Makefile"/>
-                <exclude name="modules.rst"/>
-                <exclude name="_static"/>
-            </fileset>
-        </delete>
-        <exec command="sphinx-apidoc-3 -f pystratum/ -d 4 -e -P -o source/" passthru="true" checkreturn="true"/>
-        <exec command="sphinx-build-3 -b html -d build/doctrees source build/html" passthru="true" checkreturn="true"/>
-    </target>
 
     <!-- Default target -->
     <target name="build">
