@@ -92,7 +92,7 @@ class StratumIO(IO):
 
         :param message: The message or messages.
         """
-        if self._output.verbosity >= Verbosity.VERBOSE:
+        if self._output.verbosity.value >= Verbosity.VERBOSE.value:
             self.text(message)
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -102,7 +102,7 @@ class StratumIO(IO):
 
         :param messages: The message or messages.
         """
-        if self._output.verbosity >= Verbosity.VERY_VERBOSE:
+        if self._output.verbosity.value >= Verbosity.VERY_VERBOSE.value:
             self.text(messages)
 
     # ------------------------------------------------------------------------------------------------------------------
