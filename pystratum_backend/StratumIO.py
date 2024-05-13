@@ -139,7 +139,7 @@ class StratumIO(IO):
         self.__block('ERROR', messages)
 
     # ------------------------------------------------------------------------------------------------------------------
-    def waring(self, messages: Union[str, Iterable[str]]) -> None:
+    def warning(self, messages: Union[str, Iterable[str]]) -> None:
         """
         Writes a warning message to the output.
 
