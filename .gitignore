@@ -1,8 +1,6 @@
 **/__pycache__/
 /.coverage
 /.idea/
-/.pdm-build/
-/PyStratum_Backend.egg-info/
 /bin/phing
 /composer.lock
 /dist/
@@ -10,3 +8,4 @@
 /test/html/
 /vendor/
 /venv/
+/poetry.lock
