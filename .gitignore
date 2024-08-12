@@ -1,11 +1,8 @@
 **/__pycache__/
-/.coverage
 /.idea/
+/.venv/
 /bin/phing
 /composer.lock
 /dist/
-/requirements.txt
-/test/html/
-/vendor/
-/venv/
 /poetry.lock
+/vendor/

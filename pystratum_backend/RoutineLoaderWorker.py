@@ -1,5 +1,5 @@
 from abc import ABC
-from typing import List, Optional
+from typing import List
 
 
 class RoutineLoaderWorker(ABC):
@@ -8,7 +8,7 @@ class RoutineLoaderWorker(ABC):
     """
 
     # ------------------------------------------------------------------------------------------------------------------
-    def execute(self, file_names: Optional[List[str]] = None) -> int:
+    def execute(self, file_names: List[str] | None = None) -> int:
         """
         Does the actual execution of the routine loader command for the backend. Returns 0 on success. Otherwise,
         returns nonzero.

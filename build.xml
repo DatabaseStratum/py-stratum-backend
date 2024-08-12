@@ -9,12 +9,39 @@
 
     <!-- Install virtual environment -->
     <target name="venv">
-        <delete dir="venv" quiet="true"/>
-        <delete file="poetry.lock" quiet="true"/>
-        <exec command="python3 -m venv venv" checkreturn="true" passthru="true"/>
-        <exec command="./venv/bin/python -m pip install --upgrade pip" checkreturn="true" passthru="true"/>
-        <exec command="./venv/bin/python -m pip install --upgrade poetry" checkreturn="true" passthru="true"/>
-        <exec command="./venv/bin/poetry install --no-root" passthru="true" checkreturn="true"/>
+        <exec executable="python3" checkreturn="true" passthru="true">
+            <arg value="-m"/>
+            <arg value="venv"/>
+            <arg value=".venv"/>
+        </exec>
+        <exec executable="./.venv/bin/python" checkreturn="true" passthru="true">
+            <arg value="-m"/>
+            <arg value="pip"/>
+            <arg value="install"/>
+            <arg value="--upgrade"/>
+            <arg value="pip"/>
+        </exec>
+        <exec executable="./.venv/bin/python" checkreturn="true" passthru="true">
+            <arg value="-m"/>
+            <arg value="pip"/>
+            <arg value="install"/>
+            <arg value="--upgrade"/>
+            <arg value="poetry"/>
+        </exec>
+        <exec executable="./.venv/bin/poetry" passthru="true" checkreturn="true">
+            <arg value="--ansi"/>
+            <arg value="lock"/>
+        </exec>
+        <exec executable="./.venv/bin/poetry" passthru="true" checkreturn="true">
+            <arg value="--ansi"/>
+            <arg value="install"/>
+            <arg value="--no-root"/>
+        </exec>
+        <exec executable="./.venv/bin/poetry" passthru="true" checkreturn="true">
+            <arg value="--ansi"/>
+            <arg value="show"/>
+            <arg value="--outdated"/>
+        </exec>
     </target>
 
     <!-- Creates a new version/release. -->
@@ -31,20 +58,34 @@
                 </replaceregexp>
             </filterchain>
         </reflexive>
-        <gitcommit repository="." message="Release: ${VERSION}" allFiles="true"/>
-        <gitpush repository="."/>
-        <gittag repository="." name="${VERSION}"/>
-        <gitpush repository="." refspec="${VERSION}" quiet="false"/>
+        <exec executable="git" checkreturn="true" passthru="true">
+            <arg value="commit"/>
+            <arg value="-a"/>
+            <arg value="-m"/>
+            <arg value="Release: ${VERSION}"/>
+        </exec>
+        <exec executable="git" checkreturn="true" passthru="true">
+            <arg value="push"/>
+        </exec>
+        <exec executable="git" checkreturn="true" passthru="true">
+            <arg value="tag"/>
+            <arg value="${VERSION}"/>
+        </exec>
+        <exec executable="git" checkreturn="true" passthru="true">
+            <arg value="push"/>
+            <arg value="origin"/>
+            <arg value="${VERSION}"/>
+        </exec>
     </target>
 
     <!-- Creates a new distribution using pyproject.toml -->
     <target name="dist">
-        <exec command="./venv/bin/poetry build" passthru="true" checkreturn="true"/>
+        <exec command="./.venv/bin/poetry build" passthru="true" checkreturn="true"/>
     </target>
 
     <!-- Uploads a distribution to PyPI -->
     <target name="upload">
-        <exec command="./venv/bin/poetry publish" passthru="true" checkreturn="true"/>
+        <exec command="./.venv/bin/poetry publish" passthru="true" checkreturn="true"/>
     </target>
 
     <!-- All steps for releasing a new version -->

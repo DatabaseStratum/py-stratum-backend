@@ -1,5 +1,4 @@
 from configparser import ConfigParser
-from typing import Optional
 
 from pystratum_backend.ConstantWorker import ConstantWorker
 from pystratum_backend.RoutineLoaderWorker import RoutineLoaderWorker
@@ -13,7 +12,7 @@ class Backend:
     """
 
     # ------------------------------------------------------------------------------------------------------------------
-    def create_constant_worker(self, settings: ConfigParser, io: StratumIO) -> Optional[ConstantWorker]:
+    def create_constant_worker(self, settings: ConfigParser, io: StratumIO) -> ConstantWorker | None:
         """
         Creates the object that does the actual execution of the constant command for the backend.
 
@@ -23,7 +22,7 @@ class Backend:
         return None
 
     # ------------------------------------------------------------------------------------------------------------------
-    def create_routine_loader_worker(self, settings: ConfigParser, io: StratumIO) -> Optional[RoutineLoaderWorker]:
+    def create_routine_loader_worker(self, settings: ConfigParser, io: StratumIO) -> RoutineLoaderWorker | None:
         """
         Creates the object that does the actual execution of the routine loader command for the backend.
 
@@ -33,8 +32,8 @@ class Backend:
         return None
 
     # ------------------------------------------------------------------------------------------------------------------
-    def create_routine_wrapper_generator_worker(self, settings: ConfigParser, io: StratumIO) -> Optional[
-        RoutineWrapperGeneratorWorker]:
+    def create_routine_wrapper_generator_worker(self, settings: ConfigParser,
+                                                io: StratumIO) -> RoutineWrapperGeneratorWorker | None:
         """
         Creates the object that does the actual execution of the routine wrapper generator command for the backend.
 

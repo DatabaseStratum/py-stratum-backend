@@ -3,7 +3,7 @@ import platform
 import shlex
 import struct
 import subprocess
-from typing import Optional, Tuple
+from typing import Tuple
 
 
 class Terminal(object):
@@ -21,7 +21,7 @@ class Terminal(object):
 
     # ------------------------------------------------------------------------------------------------------------------
     @property
-    def width(self) -> Optional[int]:
+    def width(self) -> int | None:
         """
         Returns the width of the terminal.
         """
@@ -36,7 +36,7 @@ class Terminal(object):
 
     # ------------------------------------------------------------------------------------------------------------------
     @property
-    def height(self) -> Optional[int]:
+    def height(self) -> int | None:
         """
         Returns the height of the terminal.
         """
@@ -71,7 +71,7 @@ class Terminal(object):
 
     # ------------------------------------------------------------------------------------------------------------------
     @staticmethod
-    def _get_terminal_size_windows() -> Optional[Tuple[int, int]]:
+    def _get_terminal_size_windows() -> Tuple[int, int] | None:
         """
         Returns the width and height of the terminal on MS-Windows
         """
@@ -94,7 +94,7 @@ class Terminal(object):
 
     # ------------------------------------------------------------------------------------------------------------------
     @staticmethod
-    def _get_terminal_size_tput() -> Optional[Tuple[int, int]]:
+    def _get_terminal_size_tput() -> Tuple[int, int] | None:
         """
         Returns the width and height of the terminal on MS-Windows
 
@@ -109,7 +109,7 @@ class Terminal(object):
             return None
 
     # ------------------------------------------------------------------------------------------------------------------
-    def _get_terminal_size_linux(self) -> Optional[Tuple[int, int]]:
+    def _get_terminal_size_linux(self) -> Tuple[int, int] | None:
         """
         Returns the width and height of the terminal on Linux.
         """
